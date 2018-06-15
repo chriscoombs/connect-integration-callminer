@@ -3,25 +3,12 @@ global:
   owner: quickstart-eng@amazon.com
   qsname: connect-integration-callminer
   regions:
-    - ap-northeast-1
-    - ap-northeast-2
-    - ap-south-1
-    - ap-southeast-1
     - ap-southeast-2
-    - ca-central-1
     - eu-central-1
-    - eu-west-1
-    - sa-east-1
     - us-east-1
-    - us-east-2
-    - us-west-1
     - us-west-2
   reporting: true
- 
 tests:
-  connect-integration-callminert1:
-    parameter_input: connect-integration-callminer-example-params1.json
-    template_file: connect-integration-callminer-example1.template
-  connect-integration-callminert2:
-    parameter_input: connect-integration-callminer-example-params2.json
-    template_file: connect-integration-callminer-example2.template
+  defaults:
+    parameter_input: defaults.json
+    template_file: callminer.json

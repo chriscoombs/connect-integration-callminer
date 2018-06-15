@@ -74,7 +74,8 @@
         "KinesisStreamKMSKeyARN": {
             "Description": "(Optional) If you've enabled encryption for your Amazon Connect Kinesis stream, enter the KMS encryption key ARN, otherwise leave this blank.",
             "Type": "String",
-            "AllowedPattern": "(^$|(?i)arn:aws:kms:\\S+)"
+            "AllowedPattern": "(^$|(?i)arn:aws:kms:\\S+)",
+            "Default": "arn:aws:kms:us-east-1:555555555555:key/1f70885x-953d-4f1f-8c8a-5902ef2cd21e"
         },
         "TrustedAccount": {
             "Description": "Account Id for Cross-Account Role",
@@ -290,6 +291,12 @@
                 },
                 "VAR_KinesisStreamKMSKeyARN": {
                     "Ref": "KinesisStreamKMSKeyARN"
+                },
+                "VAR_IAMRoleARN": {
+                    "Fn::GetAtt": [
+                        "CrossAccountRole",
+                        "Arn"
+                    ]
                 },
                 "VAR_ExternalId": {
                     "Ref": "ExternalId"

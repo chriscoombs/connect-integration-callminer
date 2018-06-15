@@ -7,17 +7,18 @@
 
 exports.handler = (event, context, callback) => {
   var response = require('./cfn-response');
-  var http = require('http');
+  var http = require('https');
   var customerId = event.ResourceProperties.VAR_ExternalId;
   var s3BucketName = event.ResourceProperties.VAR_S3BucketName;
   var s3BucketKMSKeyARN = event.ResourceProperties.VAR_S3BucketKMSKeyARN;
   var kinesisStreamARN = event.ResourceProperties.VAR_KinesisStreamARN;
   var kinesisKMSKeyARN = event.ResourceProperties.VAR_KinesisStreamKMSKeyARN;
-  var post_data = `{'CUSTOMER_ID':'${customerId}', 'S3BUCKET_NAME':'${s3BucketName}', 'S3BUCKET_KMS_ARN':'${s3BucketKMSKeyARN}', 'KINESIS_STREAM_ARN':'${kinesisStreamARN}', 'KINESIS_KMS_ARN':'${kinesisKMSKeyARN}'}`;
+  var iamRoleARN = event.ResourceProperties.VAR_IAMRoleARN;
+  var post_data = `{'CUSTOMER_ID':'${customerId}', 'S3BUCKET_NAME':'${s3BucketName}', 'S3BUCKET_KMS_ARN':'${s3BucketKMSKeyARN}', 'KINESIS_STREAM_ARN':'${kinesisStreamARN}', 'KINESIS_KMS_ARN':'${kinesisKMSKeyARN}', 'IAM_ROLE_ARN':'${iamRoleARN}'}`;
   var post_options = {
-    host: '54.175.107.103',
-    port: '80',
-    path: '/api/values',
+    host: 'register.callminer.net',
+    port: '443',
+    path: '/api/amazonconnectcallback',
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
