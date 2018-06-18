@@ -6,25 +6,18 @@
             "ParameterGroups": [
                 {
                     "Label": {
-                        "default": "S3 Bucket Configuration"
+                        "default": "Amazon Connect Configuration"
                     },
                     "Parameters": [
                         "S3BucketName",
-                        "S3BucketKMSKeyARN"
-                    ]
-                },
-                {
-                    "Label": {
-                        "default": "Kinesis Stream Configuration"
-                    },
-                    "Parameters": [
+                        "S3BucketKMSKeyARN",
                         "KinesisStreamARN",
                         "KinesisStreamKMSKeyARN"
                     ]
                 },
                 {
                     "Label": {
-                        "default": "CallMiner Read-Only Account Access *Do Not Modify*"
+                        "default": "CallMiner Configuration ***DO NOT MODIFY***"
                     },
                     "Parameters": [
                         "TrustedAccount",
@@ -34,16 +27,16 @@
             ],
             "ParameterLabels": {
                 "S3BucketName": {
-                    "default": "Bucket Name"
+                    "default": "Call recordings S3 bucket"
                 },
                 "S3BucketKMSKeyARN": {
-                    "default": "Encryption Key ARN"
+                    "default": "Call recordings S3 KMS Encryption key ARN"
                 },
                 "KinesisStreamARN": {
-                    "default": "Stream ARN"
+                    "default": "Data streaming CTR Kinesis Stream ARN"
                 },
                 "KinesisStreamKMSKeyARN": {
-                    "default": "Encryption Key ARN"
+                    "default": "Data streaming CTR KMS encryption key ARN"
                 },
                 "TrustedAccount": {
                     "default": "Account Id to Grant Permission"
@@ -56,23 +49,23 @@
     },
     "Parameters": {
         "S3BucketName": {
-            "Description": "Enter the name of the S3 bucket where your Amazon Connect recordings are stored.",
+            "Description": "Enter the name of the S3 bucket where your Amazon Connect recordings are stored. Please refer to https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instance.html#datastorage for instructions on how to obtain this information.",
             "Type": "String",
             "AllowedPattern": "(?i)\\S+"
         },
         "S3BucketKMSKeyARN": {
-            "Description": "Enter the ARN of the S3 bucket KMS key used for encryption of your Amazon Connect recordings.",
+            "Description": "Enter the ARN of the KMS key used for encryption of your Amazon Connect recordings. Please refer to https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instance.html#datastorage for instructions on how to obtain this information.",
             "Type": "String",
             "AllowedPattern": "(^$|(?i)arn:aws:kms:\\S+)"
         },
         "KinesisStreamARN": {
-            "Description": "Enter the ARN of the Kinesis stream where Amazon Connect Contact Trace Records (CTRs) are written.",
+            "Description": "Enter the ARN of the Kinesis stream where Amazon Connect Contact Trace Records (CTRs) are written. Please refer to https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-instance.html#dataexporting for instructions on how to obtain this information.",
             "Type": "String",
             "AllowedPattern": "(?i)arn:aws:kinesis:\\S+",
             "MinLength": 17
         },
         "KinesisStreamKMSKeyARN": {
-            "Description": "(Optional) If you've enabled encryption for your Amazon Connect Kinesis stream, enter the KMS encryption key ARN, otherwise leave this blank.",
+            "Description": "(Optional) If you've enabled encryption for your Amazon Connect Kinesis stream, enter the KMS encryption key ARN, otherwise DO NOT MODIFY this field.",
             "Type": "String",
             "AllowedPattern": "(^$|(?i)arn:aws:kms:\\S+)",
             "Default": "arn:aws:kms:us-east-1:555555555555:key/1f70885x-953d-4f1f-8c8a-5902ef2cd21e"
