@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "CallMiner Eureeka integration for Amazon Connect (qs-1oh3nqkht)",
+    "Description": "CallMiner Eureka integration for Amazon Connect (qs-1oh3nqkht)",
     "Metadata": {
         "AWS::CloudFormation::Interface": {
             "ParameterGroups": [
