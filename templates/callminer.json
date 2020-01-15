@@ -260,7 +260,7 @@
                     "S3Bucket": "aws-quickstart",
                     "S3Key": "connect-integration-callminer/functions/packages/integration/lambda.zip"
                 },
-                "Runtime": "nodejs6.10",
+                "Runtime": "nodejs10.x",
                 "Timeout": "30"
             }
         },
